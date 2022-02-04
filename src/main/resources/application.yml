@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: book_service_v1
+          uri: 'http://localhost:8081'
+          predicates:
+            - Path=/books/**
+        - id: cart_service_v1
+          uri: 'http://localhost:8082'
+          predicates:
+            - Path=/orders/**
